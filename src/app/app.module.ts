@@ -7,6 +7,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ToysPageComponent } from './toys-page/toys-page.component';
 import { TreePageComponent } from './tree-page/tree-page.component';
 import { HeaderComponent } from './header/header.component';
+import { ToyGridComponent } from './toys-page/toy-grid/toy-grid.component';
+import { ToyFiltersComponent } from './toys-page/toy-filters/toy-filters.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HeaderComponent } from './header/header.component';
     HomePageComponent,
     ToysPageComponent,
     TreePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    ToyGridComponent,
+    ToyFiltersComponent
   ],
   imports: [
     BrowserModule,

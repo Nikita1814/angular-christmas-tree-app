@@ -5,9 +5,11 @@ import { ToysPageComponent } from './toys-page/toys-page.component';
 import { TreePageComponent } from './tree-page/tree-page.component';
 
 const routes: Routes = [
-  {path:'', component: HomePageComponent},
+  {path:'home-page', component: HomePageComponent},
   {path:'toys-page', component: ToysPageComponent },
-  {path:'tree-page', component: TreePageComponent}
+  {path:'tree-page', component: TreePageComponent},
+  {path:'**', component: HomePageComponent}
+
 
 ];
 

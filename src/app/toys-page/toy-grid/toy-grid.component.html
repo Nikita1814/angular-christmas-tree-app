@@ -1,0 +1,15 @@
+
+<div *ngFor="let item of toys"class="toy">
+  <h2 class="toy-name">{{item.name}}</h2>
+  <div class="toy-image" style = 'background-image: url("../../../assets/toys/{{item.num}}.png");'></div>
+  <div class="toy-description">
+      <p class="toy-amount">Количество: {{item.count}}</p>
+      <p class="toy-year">Год: {{item.year}}</p>
+      <p class="toy-shape">Форма: {{item.shape}}</p>
+      <p class="toy-color">Цвет: {{item.color}}</p>
+      <p class="toy-size">Размер: {{item.size}}</p>
+      <p *ngIf="item.favorite"class="toy-favourite">Лбюимая: да</p>
+      <p *ngIf="!item.favorite"class="toy-favourite">Лбюимая: нет</p>
+  </div>
+  <div class="fav-btn" id="{{item.num}}"></div>
+</div>

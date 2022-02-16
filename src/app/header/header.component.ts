@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToyServiceService } from '../toy-service.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(public toyService:ToyServiceService) {
+   }
 
   ngOnInit(): void {
   }
