@@ -10,9 +10,9 @@ export interface Toy {
 }
 
 export interface FilterObjInterface  {
-    shape: Set<string | undefined> | Array<string | undefined>
-    color: Set<string | undefined> | Array<string | undefined>
-    size: Set<string | undefined> | Array<string | undefined>
+    shape: Set<string | undefined> 
+    color: Set<string | undefined>
+    size: Set<string | undefined>
     favorite: boolean
     sort: string
     search: string

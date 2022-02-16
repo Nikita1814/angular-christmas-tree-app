@@ -7,12 +7,13 @@ import { FilterObjInterface } from './interfaces';
 })
 export class ToyServiceService {
   toyData: Toy[]
-  favs: Toy[]
+  favs: Set<string>
   filters: FilterObjInterface
   filtered: Toy[]
+  sortfuncs: { [key: string]: (a: Toy, b: Toy) => number }
   constructor() {
     this.toyData = toyData
-    this.favs = []
+    this.favs = new Set()
     this.filters = {
       shape: new Set(),
       color: new Set(),
@@ -25,6 +26,57 @@ export class ToyServiceService {
       beginAmount: 1,
       endAmount: 12,
   }
+  this.sortfuncs = {
+    AZ: function (a: Toy, b: Toy) {
+        return a.name.localeCompare(b.name)
+    },
+    ZA: function (a: Toy, b: Toy) {
+        return b.name.localeCompare(a.name)
+    },
+    increase: function (a: Toy, b: Toy) {
+        return +a.count - +b.count
+    },
+    decrease: function (a: Toy, b: Toy) {
+        return +b.count - +a.count
+    },
+}
   this.filtered = toyData
+   }
+   filterToys(sort?:'sort'){
+    this.filtered = toyData
+
+    console.log(this.filtered)
+   this.filtered = this.filtered.filter((el) =>{
+     console.log((
+      ((this.filters.shape as Set<string | undefined>).has(el.shape) ||
+          (this.filters.shape as Set<string | undefined>).size === 0) &&
+      ((this.filters.color as Set<string | undefined>).has(el.color) ||
+          (this.filters.color as Set<string | undefined>).size === 0) &&
+      ((this.filters.size as Set<string | undefined>).has(el.size) ||
+          (this.filters.size as Set<string | undefined>).size === 0)
+  ))
+    return (
+      ((this.filters.shape as Set<string | undefined>).has(el.shape) ||
+          (this.filters.shape as Set<string | undefined>).size === 0) &&
+      ((this.filters.color as Set<string | undefined>).has(el.color) ||
+          (this.filters.color as Set<string | undefined>).size === 0) &&
+      ((this.filters.size as Set<string | undefined>).has(el.size) ||
+          (this.filters.size as Set<string | undefined>).size === 0)
+  )
+   })
+
+   /*if (this.filters.favorite === true) {
+    this.filtered = this.filtered.filter((el) => {
+        return el.favorite
+    })
+}
+if (this.filters.search !== '') {
+    this.filtered = this.filtered.filter((el) => {
+        return el.name.toLowerCase().includes(this.filters.search)
+    })
+}*/
+const sortMethod: (a: Toy, b: Toy) => number = this.sortfuncs[this.filters.sort]
+this.filtered.sort(sortMethod)
+console.log(this.filtered)
    }
 }
