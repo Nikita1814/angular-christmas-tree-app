@@ -73,7 +73,7 @@ export class ToyFiltersComponent implements OnInit {
     ]
 
     yearSlider?.noUiSlider?.on('slide', function (values, handleBar) {
-        yearOutput[handleBar].textContent = values[handleBar].toString().slice(0, 4)
+      yearOutput[handleBar].textContent = values[handleBar].toString().slice(0, 4)
         filters.beginYear = Number(document.getElementById('begin-year')?.textContent)
         filters.endYear = Number(document.getElementById('end-year')?.textContent)
         toyService.filterToys()

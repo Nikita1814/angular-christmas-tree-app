@@ -84,4 +84,19 @@ const sortMethod: (a: Toy, b: Toy) => number = this.sortfuncs[this.filters.sort]
 this.filtered.sort(sortMethod)
 console.log(this.filtered)
    }
+   resetFilters(){
+     this.filters = {
+      shape: new Set(),
+      color: new Set(),
+      size: new Set(),
+      favorite: false,
+      sort: 'AZ',
+      search: '',
+      beginYear: 1940,
+      endYear: 2020,
+      beginAmount: 1,
+      endAmount: 12,
+  }
+  this.filterToys()
+   }
 }

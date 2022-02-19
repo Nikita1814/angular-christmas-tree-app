@@ -47,14 +47,14 @@
   </div>
   <div class="filter sorting-criteria">
     <h2>Сортировка</h2>
-    <select (change)="updSortFunc($event)" name="sorts" class="sorts">
+    <select (change)="updSortFunc($event)" [value] ="this.toyService.filters.sort "name="sorts" class="sorts">
       <option value="AZ"> По названию от А до Я</option>
       <option value="ZA"> По названию от Я до А</option>
       <option value="decrease"> По количеству по убыванию</option>
       <option value="increase"> По количеству по возрастанию</option>
     </select>
-    <input (input)="updSearch($event)" type="search" class="search" autocomplete="off" placeholder="По имени">
-    <button class="reset">Сброс</button>
+    <input (input)="updSearch($event)" type="search" class="search" autocomplete="off" placeholder="По имени" [value] ="toyService.filters.search">
+    <button class="reset" (click) = "toyService.resetFilters()">Сброс</button>
     <button class="reset-all"> Сбросить Хранилище</button>
   </div>
 
