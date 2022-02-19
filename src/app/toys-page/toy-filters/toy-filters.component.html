@@ -24,7 +24,7 @@
       <div (click) ="updAppearanceFilter($event, toyService.filters.size )" data-criteria="малый" id="small" class="selectable" [ngClass] ="{'selected': toyService.filters.size.has('малый')}"></div>
     </div>
     <div class="favorite">
-      <label>Только любимые:<input type="checkbox" class="fav-check" id="fav"></label>
+      <label>Только любимые:<input type="checkbox" class="fav-check" id="fav" #fav [checked] ="toyService.filters.favorite" (change) ="updFavorite(fav.checked)"></label>
     </div>
   </div>
   <div class="filter range-criteria">

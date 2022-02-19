@@ -1,5 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import 'nouislider/dist/nouislider.css';
 * {
   box-sizing: border-box;
   /*transition: all 1s ease-in-out;*/

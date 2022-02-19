@@ -43,9 +43,10 @@ export class ToyServiceService {
   this.filtered = toyData
    }
    filterToys(sort?:'sort'){
+    console.log(this.filtered)
     this.filtered = toyData
 
-    console.log(this.filtered)
+
    this.filtered = this.filtered.filter((el) =>{
      console.log((
       ((this.filters.shape as Set<string | undefined>).has(el.shape) ||
@@ -61,7 +62,11 @@ export class ToyServiceService {
       ((this.filters.color as Set<string | undefined>).has(el.color) ||
           (this.filters.color as Set<string | undefined>).size === 0) &&
       ((this.filters.size as Set<string | undefined>).has(el.size) ||
-          (this.filters.size as Set<string | undefined>).size === 0)
+          (this.filters.size as Set<string | undefined>).size === 0) &&
+          Number(el.year) >= this.filters.beginYear &&
+          Number(el.year) <= this.filters.endYear &&
+          Number(el.count) >= this.filters.beginAmount &&
+          Number(el.count) <= this.filters.endAmount
   )
    })
 
