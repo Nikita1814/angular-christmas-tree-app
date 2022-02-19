@@ -8,7 +8,9 @@ import { ToyServiceService } from 'src/app/toy-service.service';
 export class ToyFiltersComponent implements OnInit {
   constructor(public toyService: ToyServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('initialized')
+  }
   updAppearanceFilter(e: Event, set: Set<string | undefined>) {
     const target = e.target as HTMLElement;
     if (set.has(target.dataset['criteria'])) {
@@ -19,5 +21,14 @@ export class ToyFiltersComponent implements OnInit {
     console.log(set)
     this.toyService.filterToys()
   }
-
+  updSortFunc(e: Event) {
+  const val = (e.target as HTMLSelectElement).value
+  this.toyService.filters.sort = val
+  this.toyService.filterToys()
+  }
+  updSearch(e:Event){
+    const val = (e.target as HTMLInputElement).value
+    this.toyService.filters.search = val
+    this.toyService.filterToys()
+  }
 }

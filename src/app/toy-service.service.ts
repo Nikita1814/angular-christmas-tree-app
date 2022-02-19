@@ -65,7 +65,7 @@ export class ToyServiceService {
   )
    })
 
-   /*if (this.filters.favorite === true) {
+   if (this.filters.favorite === true) {
     this.filtered = this.filtered.filter((el) => {
         return el.favorite
     })
@@ -74,7 +74,7 @@ if (this.filters.search !== '') {
     this.filtered = this.filtered.filter((el) => {
         return el.name.toLowerCase().includes(this.filters.search)
     })
-}*/
+}
 const sortMethod: (a: Toy, b: Toy) => number = this.sortfuncs[this.filters.sort]
 this.filtered.sort(sortMethod)
 console.log(this.filtered)
