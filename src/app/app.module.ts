@@ -9,6 +9,8 @@ import { TreePageComponent } from './tree-page/tree-page.component';
 import { HeaderComponent } from './header/header.component';
 import { ToyGridComponent } from './toys-page/toy-grid/toy-grid.component';
 import { ToyFiltersComponent } from './toys-page/toy-filters/toy-filters.component';
+import { DecorationsComponent } from './tree-page/decorations/decorations.component';
+import { ToyBoxComponent } from './tree-page/toy-box/toy-box.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ToyFiltersComponent } from './toys-page/toy-filters/toy-filters.compone
     TreePageComponent,
     HeaderComponent,
     ToyGridComponent,
-    ToyFiltersComponent
+    ToyFiltersComponent,
+    DecorationsComponent,
+    ToyBoxComponent
   ],
   imports: [
     BrowserModule,

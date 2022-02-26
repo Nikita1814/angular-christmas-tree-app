@@ -1,1 +1,20 @@
-<p>tree-page works!</p>
+<div class="page tree-page">
+<app-decorations class="tree-left" (animateSnow) = "animateSnow()"></app-decorations>
+  <div class="tree-div" style = "background-image: url(assets/bg/{{toyService.treeSettings.bg}}.jpg);">
+    <div [hidden]="!toyService.treeSettings.snow" class="snow ">
+      <i *ngFor ="let i of mockArr" class="snowflake"></i>
+    </div>
+    <div *ngIf="toyService.treeSettings.lightsOn" class="lights-container hidden">
+      <div class="lights-rope"></div>
+    </div>
+    <img class="tree-image" src="assets/tree/{{toyService.treeSettings.treeImg}}.png" usemap="#tree-map">
+    <map name="tree-map">
+      <area class="drop-area" shape="poly" coords="1,550,102,210,250,1,402,233,499,550,250,699">
+    </map>
+  </div>
+  <div class="tree-right">
+    <h4>Игрушки</h4>
+    <app-toy-box class="toy-select">
+    </app-toy-box>
+  </div>
+</div>

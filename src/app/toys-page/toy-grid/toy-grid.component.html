@@ -11,5 +11,5 @@
       <p *ngIf="item.favorite"class="toy-favourite">Лбюимая: да</p>
       <p *ngIf="!item.favorite"class="toy-favourite">Лбюимая: нет</p>
   </div>
-  <div class="fav-btn" [ngClass] = "{'fav-btn-active' : toyService.favs.has(item.num)}" id="{{item.num}}"></div>
+  <div (click) ="toyService.manageFavs(item.num)"class="fav-btn" [ngClass] = "{'fav-btn-active' : toyService.favs.has(toyService.toyData[+item.num -1 ])}" id="{{item.num}}"></div>
 </div>

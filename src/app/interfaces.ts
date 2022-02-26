@@ -10,7 +10,7 @@ export interface Toy {
 }
 
 export interface FilterObjInterface  {
-    shape: Set<string | undefined> 
+    shape: Set<string | undefined>
     color: Set<string | undefined>
     size: Set<string | undefined>
     favorite: boolean
@@ -33,4 +33,12 @@ export interface TreePageSettingsObjInterface {
     music: boolean
     lightsColor: string
     lightsOn: boolean
+}
+export interface TreePageSettings  {
+  treeImg: string
+  bg: string,
+  snow: boolean,
+  music: boolean,
+  lightsColor: string,
+  lightsOn: boolean,
 }

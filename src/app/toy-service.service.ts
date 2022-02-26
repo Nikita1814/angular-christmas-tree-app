@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import toyData from './data';
-import { Toy } from './interfaces';
+import { Toy, TreePageSettings } from './interfaces';
 import { FilterObjInterface } from './interfaces';
 @Injectable({
   providedIn: 'root'
 })
 export class ToyServiceService {
   toyData: Toy[]
-  favs: Set<string>
+  favs: Set<Toy>
   filters: FilterObjInterface
   filtered: Toy[]
   sortfuncs: { [key: string]: (a: Toy, b: Toy) => number }
+  treeSettings: TreePageSettings
   constructor() {
     this.toyData = toyData
     this.favs = new Set()
@@ -26,6 +27,14 @@ export class ToyServiceService {
       beginAmount: 1,
       endAmount: 12,
   }
+  this.treeSettings = {
+    treeImg: '1',
+    bg: '1',
+    snow: false,
+    music: false,
+    lightsColor: 'yellow',
+    lightsOn: false,
+}
   this.sortfuncs = {
     AZ: function (a: Toy, b: Toy) {
         return a.name.localeCompare(b.name)
@@ -98,5 +107,13 @@ console.log(this.filtered)
       endAmount: 12,
   }
   this.filterToys()
+   }
+   manageFavs(num:string){
+   if (this.favs.has(this.toyData[Number(num) - 1])){
+     this.favs.delete(this.toyData[Number(num) - 1])
+   } else if(this.favs.size < 20){
+     this.favs.add(this.toyData[Number(num) - 1])
+   }
+   console.log(this.favs)
    }
 }

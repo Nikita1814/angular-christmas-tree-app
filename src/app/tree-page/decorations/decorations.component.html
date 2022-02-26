@@ -1,0 +1,41 @@
+<div class="tree-buttons">
+  <div (click) ="playMusic()"class="music play"  [ngClass] = "{'play' : !toyService.treeSettings.music, 'mute' : toyService.treeSettings.music }"></div>
+  <div (click)="setSnow()" class="snow-btn" [ngClass] = "{'snow-on' : toyService.treeSettings.snow}"></div>
+  <button class="reset-all">Сбросить Настройки</button>
+</div>
+<div class="tree-select">
+  <h4>Выберите елку</h4>
+  <div class="select-grid">
+    <div (click) ="setTree('1')"data-tree="1" class="tree-select-type tr1" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '1' }"></div>
+    <div (click) ="setTree('2')" data-tree="2" class="tree-select-type tr2" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '2' }"></div>
+    <div (click) ="setTree('3')" data-tree="3" class="tree-select-type tr3" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '3' }"></div>
+    <div (click) ="setTree('4')" data-tree="4" class="tree-select-type tr4" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '4' }"></div>
+    <div (click) ="setTree('5')" data-tree="5" class="tree-select-type tr5" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '5' }"></div>
+    <div (click) ="setTree('6')" data-tree="6" class="tree-select-type tr6" [ngClass] = "{'tree-select-active' : toyService.treeSettings.treeImg === '6' }"></div>
+  </div>
+</div>
+<div class="bg-select">
+  <h4>Выберите фон</h4>
+  <div class="select-grid ">
+    <div (click) = "setBg('1')" data-bg="1" class="tree-select-bg bg1" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '1' }"></div>
+    <div (click) = "setBg('2')" data-bg="2" class="tree-select-bg bg2" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '2' }"></div>
+    <div (click) = "setBg('3')" data-bg="3" class="tree-select-bg bg3" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '3' }"></div>
+    <div (click) = "setBg('4')" data-bg="4" class="tree-select-bg bg4" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '4' }"></div>
+    <div (click) = "setBg('5')" data-bg="5" class="tree-select-bg bg5" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '5' }"></div>
+    <div (click) = "setBg('6')" data-bg="6" class="tree-select-bg bg6" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '6' }"></div>
+    <div (click) = "setBg('7')" data-bg="7" class="tree-select-bg bg7" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '7' }"></div>
+    <div (click) = "setBg('8')" data-bg="8" class="tree-select-bg bg8" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '8' }"></div>
+    <div (click) = "setBg('9')" data-bg="9" class="tree-select-bg bg9" [ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '9' }"></div>
+    <div (click) = "setBg('10')" data-bg="10" class="tree-select-bg bg10"[ngClass] = "{'tree-select-bg-active' : toyService.treeSettings.bg === '10' }"></div>
+  </div>
+</div>
+<div class="ornament-select">
+  <h4>Гирлянда</h4>
+  <div class="ornaments-box">
+    <div (click) = "setDecorations('mix')" data-ornament="mix" class="ornament-item or1" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'mix' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('palevioletred')" data-ornament="palevioletred" class="ornament-item or2" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'palevioletred' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('lime')" data-ornament="lime" class="ornament-item or3" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'lime' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('cyan')" data-ornament="cyan" class="ornament-item or4" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'cyan' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('yellow')" data-ornament="yellow" class="ornament-item or5" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'yellow' && toyService.treeSettings.lightsOn === true }"></div>
+  </div>
+</div>
