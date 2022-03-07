@@ -32,10 +32,10 @@
 <div class="ornament-select">
   <h4>Гирлянда</h4>
   <div class="ornaments-box">
-    <div (click) = "setDecorations('mix')" data-ornament="mix" class="ornament-item or1" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'mix' && toyService.treeSettings.lightsOn === true }"></div>
-    <div (click) = "setDecorations('palevioletred')" data-ornament="palevioletred" class="ornament-item or2" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'palevioletred' && toyService.treeSettings.lightsOn === true }"></div>
-    <div (click) = "setDecorations('lime')" data-ornament="lime" class="ornament-item or3" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'lime' && toyService.treeSettings.lightsOn === true }"></div>
-    <div (click) = "setDecorations('cyan')" data-ornament="cyan" class="ornament-item or4" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'cyan' && toyService.treeSettings.lightsOn === true }"></div>
-    <div (click) = "setDecorations('yellow')" data-ornament="yellow" class="ornament-item or5" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'yellow' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('cyan', 'mix' )" data-ornament="mix" class="ornament-item or1" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'mix' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('palevioletred', 'blink')" data-ornament="palevioletred" class="ornament-item or2" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'palevioletred' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('lime','blink')" data-ornament="lime" class="ornament-item or3" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'lime' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('cyan','blink')" data-ornament="cyan" class="ornament-item or4" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'cyan' && toyService.treeSettings.lightsOn === true }"></div>
+    <div (click) = "setDecorations('yellow','blink')" data-ornament="yellow" class="ornament-item or5" [ngClass] = "{'ornament-active' : toyService.treeSettings.lightsColor === 'yellow' && toyService.treeSettings.lightsOn === true }"></div>
   </div>
 </div>

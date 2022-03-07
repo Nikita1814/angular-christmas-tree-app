@@ -4,8 +4,10 @@
     <div [hidden]="!toyService.treeSettings.snow" class="snow ">
       <i *ngFor ="let i of mockArr" class="snowflake"></i>
     </div>
-    <div *ngIf="toyService.treeSettings.lightsOn" class="lights-container hidden">
-      <div class="lights-rope"></div>
+    <div [hidden]="!this.toyService.treeSettings.lightsOn" class="lights-container">
+      <div *ngFor=" let rope of decorMockArr; let i = index"  class="lights-rope">
+        <div *ngFor ="let bulb of decorMockArr[i]; let j = index" [hidden]="!this.toyService.treeSettings.lightsOn" [ngStyle]="styleBulb(bulb)"></div>
+      </div>
     </div>
     <img class="tree-image" src="assets/tree/{{toyService.treeSettings.treeImg}}.png" usemap="#tree-map">
     <map name="tree-map">

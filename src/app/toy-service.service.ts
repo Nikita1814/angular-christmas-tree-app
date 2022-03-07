@@ -34,6 +34,7 @@ export class ToyServiceService {
     music: false,
     lightsColor: 'yellow',
     lightsOn: false,
+    lightsAnim: 'blink'
 }
   this.sortfuncs = {
     AZ: function (a: Toy, b: Toy) {

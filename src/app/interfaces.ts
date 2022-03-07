@@ -40,5 +40,6 @@ export interface TreePageSettings  {
   snow: boolean,
   music: boolean,
   lightsColor: string,
+  lightsAnim: string
   lightsOn: boolean,
 }
