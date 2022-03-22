@@ -1,11 +1,9 @@
 import {
   CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
   CdkDragMove,
 } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DraggableToy } from '../interfaces';
+import { DraggableToy, Toy } from '../interfaces';
 import { ToyServiceService } from '../toy-service.service';
 
 @Component({
@@ -52,7 +50,6 @@ export class TreePageComponent implements OnInit {
     });
   }
   styleBulb(bulb: number | undefined) {
-    //ropeIdx: number, bulbIdx: number
 
     return {
       'marginTop.px': `${(bulb as number) * 5 * 0.56}`,
@@ -61,8 +58,8 @@ export class TreePageComponent implements OnInit {
     };
   }
   treeDrop(event: CdkDragDrop<DraggableToy[]>) {
-    console.log('i Work');
-    if (event.previousContainer !== event.container) {
+
+    if (event.previousContainer !== event.container){
       const toy = this.toyService.selectedToys[event.previousIndex];
       if (Number(toy.count) > 0) {
         console.log(event);
@@ -70,46 +67,55 @@ export class TreePageComponent implements OnInit {
           JSON.stringify(event.previousContainer.data[event.previousIndex])
         );
         event.container.data.splice(event.currentIndex, 0, clone);
-        /*copyArrayItem(
-       event.previousContainer.data,
-       event.container.data,
-       event.previousIndex,
-       event.currentIndex
-     )*/
         toy.count = `${Number(toy.count) - 1}`;
         console.log(this.toyService.toysOnTree);
-      } else if (Number(toy.count) < 1) {
-        transferArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex
-        );
-        console.log(this.toyService.toysOnTree);
+
+        this.toyService.toysOnTree[event.currentIndex].pos.y =
+          event.dropPoint.y + 'px';
+        this.toyService.toysOnTree[event.currentIndex].pos.x =
+          event.dropPoint.x + 'px';
       }
-      this.toyService.toysOnTree[event.currentIndex].pos.y =
-        event.dropPoint.y + 'px';
-      this.toyService.toysOnTree[event.currentIndex].pos.x =
-        event.dropPoint.x + 'px';
     }
+  }
+
+  boxDrop(event: CdkDragDrop<Array<DraggableToy | Toy>>) {
+      console.log('ayy');
+      const item = this.toyService.toysOnTree[event.previousIndex];
+      const box = this.toyService.selectedToys.find((el) => {
+        return el.num === item.num;
+      }) as DraggableToy;
+      console.log('box', box, 'item', item);
+      box.count = `${Number(box.count) + 1}`;
+      this.toyService.toysOnTree = this.toyService.toysOnTree.filter(
+        (el) =>
+          el.num !== item.num
+      );
   }
   moved(event: Event | CdkDragMove) {
     this.toyService.draggedPos = (event as CdkDragMove).pointerPosition;
     console.log(this.toyService.draggedPos);
   }
   changePosition(event: CdkDragDrop<DraggableToy>, toy: DraggableToy) {
-   /* const rectZone = this.dropZone.nativeElement.getBoundingClientRect();
-    const rectElement = event.item.element.nativeElement.getBoundingClientRect();*/ 
-
-    let y = +toy.pos.y.replace('px', '') + event.distance.y;
-    let x = +toy.pos.x.replace('px', '') + event.distance.x;
-
-    const out = y < 0 || x < 0;
-    if (!out) {
-      toy.pos.y = y + 'px';
-      toy.pos.x = x + 'px';
-    } else {
-      console.log("it's out do something with it");
-    }
+    const rectZone = this.dropZone.nativeElement.getBoundingClientRect();
+    const rectElement = event.item.element.nativeElement.getBoundingClientRect();
+    console.log(rectZone);
+    console.log(event.dropPoint);
+      console.log('I happened');
+      let y = event.dropPoint.y;
+      let x = event.dropPoint.x;
+      if (x >= rectZone.left && x <= rectZone.right && y<= rectZone.bottom &&  y>= rectZone.top){
+        toy.pos.y = y + 'px';
+        toy.pos.x = x + 'px';
+      } else {
+      const box = this.toyService.selectedToys.find((el) => {
+        return el.num === toy.num;
+      }) as DraggableToy;
+      console.log('box', box, 'item', toy);
+      box.count = `${Number(box.count) + 1}`;
+      this.toyService.toysOnTree = this.toyService.toysOnTree.filter(
+        (el) =>
+         !(el.num === toy.num && el.count === toy.count && el.pos.x === toy.pos.x)
+      );
+      }
   }
 }

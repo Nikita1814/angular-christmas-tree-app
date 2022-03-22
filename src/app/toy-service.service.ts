@@ -8,7 +8,7 @@ import { FilterObjInterface } from './interfaces';
 export class ToyServiceService {
   toyData: Toy[]
   favs: Set<Toy>
-  selectedToys : Array<Toy | DraggableToy>
+  selectedToys : Array<DraggableToy | Toy>
   toysOnTree:Array<DraggableToy>
   filters: FilterObjInterface
   filtered: Toy[]

@@ -1,4 +1,4 @@
-<div class="page tree-page">
+<div  class="page tree-page" >
   <app-decorations class="tree-left" (animateSnow)="animateSnow()"></app-decorations>
   <div class="tree-div" style="background-image: url(assets/bg/{{toyService.treeSettings.bg}}.jpg);">
     <div [hidden]="!toyService.treeSettings.snow" class="snow ">
@@ -10,16 +10,15 @@
           [ngStyle]="styleBulb(bulb)"></div>
       </div>
     </div>
-    <div #dropZone id="drop-zone" class="tree-image" cdkDropList (cdkDropListDropped)="treeDrop($event)"
-      [cdkDropListData]="toyService.toysOnTree" cdkDropListSortingDisabled="true"
-      style="background-image: url(assets/tree/{{toyService.treeSettings.treeImg}}.png);">
+    <div #dropZone id="drop-zone" class="tree-image" cdkDropList (cdkDropListDropped)="treeDrop($event)"  [cdkDropListData]="toyService.toysOnTree" cdkDropListSortingDisabled="true"
+      style="background-image: url(assets/tree/{{toyService.treeSettings.treeImg}}.png);" cdkDropListConnectedTo="box-zone" >
       <img src="../../../assets/toys/{{toy.num}}.png" *ngFor="let toy of toyService.toysOnTree" alt="toy-image"
-        class="tree-toy-image" draggable="true" [style.top]="toy.pos.y" [style.left]="toy.pos.x" data-num="toy.num" cdkDrag  (cdkDragDropped) = "changePosition($event,toy)" ((cdkDragMoved)="moved($event)">
+        class="tree-toy-image" draggable="true" [style.top]="toy.pos.y" [style.left]="toy.pos.x" data-num="toy.num"
+        cdkDrag (cdkDragDropped)="changePosition($event,toy)" ((cdkDragMoved)="moved($event)">
     </div>
   </div>
   <div class="tree-right">
     <h4>Игрушки</h4>
-    <app-toy-box id="toy-box" class="toy-select" cdkDropList cdkDropListConnectedTo="drop-zone"
-      [cdkDropListData]="toyService.selectedToys">
+    <app-toy-box id="toy-box"  id="box-zone" class="toy-select"  [cdkDropListData]="toyService.selectedToys" cdkDropList cdkDropListConnectedTo="drop-zone">
     </app-toy-box>
   </div>
