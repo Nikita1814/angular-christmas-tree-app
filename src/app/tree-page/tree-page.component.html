@@ -14,7 +14,7 @@
       [cdkDropListData]="toyService.toysOnTree" cdkDropListSortingDisabled="true"
       style="background-image: url(assets/tree/{{toyService.treeSettings.treeImg}}.png);">
       <img src="../../../assets/toys/{{toy.num}}.png" *ngFor="let toy of toyService.toysOnTree" alt="toy-image"
-        class="tree-toy-image" draggable="true" [style.top]="toy.pos.y" [style.left]="toy.pos.x" data-num="toy.num">
+        class="tree-toy-image" draggable="true" [style.top]="toy.pos.y" [style.left]="toy.pos.x" data-num="toy.num" cdkDrag  (cdkDragDropped) = "changePosition($event,toy)" ((cdkDragMoved)="moved($event)">
     </div>
   </div>
   <div class="tree-right">

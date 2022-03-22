@@ -1,4 +1,9 @@
-import { CdkDragDrop, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDragMove,
+} from '@angular/cdk/drag-drop';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DraggableToy } from '../interfaces';
 import { ToyServiceService } from '../toy-service.service';
@@ -9,22 +14,23 @@ import { ToyServiceService } from '../toy-service.service';
   styleUrls: ['./tree-page.component.css'],
 })
 export class TreePageComponent implements OnInit {
-  @ViewChild('dropZone',{read:ElementRef,static:true}) dropZone!:ElementRef
+  @ViewChild('dropZone', { read: ElementRef, static: true })
+  dropZone!: ElementRef;
   mockArr: undefined[];
   decorMockArr: (undefined | number)[][];
   constructor(public toyService: ToyServiceService) {
     this.mockArr = new Array(40);
     this.decorMockArr = new Array(8).fill(0).map((e, idx) => {
-      let num = (idx + 1 * 4) + 3 * idx;
+      let num = idx + 1 * 4 + 3 * idx;
 
-      return new Array(num).fill(0).map((el, idx, array) =>{
-        return idx <  Math.ceil((array.length / 2) ) ? idx  : (array.length - 1 ) - idx
+      return new Array(num).fill(0).map((el, idx, array) => {
+        return idx < Math.ceil(array.length / 2) ? idx : array.length - 1 - idx;
       });
     });
   }
 
   ngOnInit(): void {
-    console.log(this.decorMockArr)
+    console.log(this.decorMockArr);
   }
   animateSnow() {
     console.log(this.toyService.treeSettings.snow);
@@ -45,42 +51,65 @@ export class TreePageComponent implements OnInit {
       );
     });
   }
-  styleBulb(bulb: number | undefined) { //ropeIdx: number, bulbIdx: number
+  styleBulb(bulb: number | undefined) {
+    //ropeIdx: number, bulbIdx: number
 
-      return {
-        'marginTop.px': `${(bulb as number) * 5 * 0.56
-        }`,
-        'background-color': `${this.toyService.treeSettings.lightsColor}`,
-        animation: `3s ease-in-out 0s infinite normal none running ${this.toyService.treeSettings.lightsAnim}`,
-      };
-
+    return {
+      'marginTop.px': `${(bulb as number) * 5 * 0.56}`,
+      'background-color': `${this.toyService.treeSettings.lightsColor}`,
+      animation: `3s ease-in-out 0s infinite normal none running ${this.toyService.treeSettings.lightsAnim}`,
+    };
   }
-  treeDrop(event: CdkDragDrop<DraggableToy[]>){
-    console.log('i Work')
-   const toy = this.toyService.selectedToys[event.previousIndex]
-   if(Number(toy.count) > 0){
-    console.log(event)
-    const clone = JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]));
-    event.container.data.splice(event.currentIndex, 0, clone);
-     /*copyArrayItem(
+  treeDrop(event: CdkDragDrop<DraggableToy[]>) {
+    console.log('i Work');
+    if (event.previousContainer !== event.container) {
+      const toy = this.toyService.selectedToys[event.previousIndex];
+      if (Number(toy.count) > 0) {
+        console.log(event);
+        const clone = JSON.parse(
+          JSON.stringify(event.previousContainer.data[event.previousIndex])
+        );
+        event.container.data.splice(event.currentIndex, 0, clone);
+        /*copyArrayItem(
        event.previousContainer.data,
        event.container.data,
        event.previousIndex,
        event.currentIndex
      )*/
-     toy.count = `${Number(toy.count) - 1}`
-     console.log(this.toyService.toysOnTree);
-   } else if (
-    (Number(toy.count) < 1)){
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      )
-      console.log(this.toyService.toysOnTree)
+        toy.count = `${Number(toy.count) - 1}`;
+        console.log(this.toyService.toysOnTree);
+      } else if (Number(toy.count) < 1) {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+        console.log(this.toyService.toysOnTree);
+      }
+      this.toyService.toysOnTree[event.currentIndex].pos.y =
+        event.dropPoint.y + 'px';
+      this.toyService.toysOnTree[event.currentIndex].pos.x =
+        event.dropPoint.x + 'px';
     }
-    this.toyService.toysOnTree[event.currentIndex].pos.y =  /*this.dropZone.nativeElement.getBoundingClientRect().top-*/ event.dropPoint.y  + "px"
-    this.toyService.toysOnTree[event.currentIndex].pos.x = /*this.dropZone.nativeElement.getBoundingClientRect().left -*/ event.dropPoint.x   + "px"
+  }
+  moved(event: Event | CdkDragMove) {
+    this.toyService.draggedPos = (event as CdkDragMove).pointerPosition;
+    console.log(this.toyService.draggedPos);
+  }
+  changePosition(event: CdkDragDrop<DraggableToy>, toy: DraggableToy) {
+   /* const rectZone = this.dropZone.nativeElement.getBoundingClientRect();
+    const rectElement = event.item.element.nativeElement.getBoundingClientRect();*/ 
+
+    let y = +toy.pos.y.replace('px', '') + event.distance.y;
+    let x = +toy.pos.x.replace('px', '') + event.distance.x;
+
+    const out = y < 0 || x < 0;
+    if (!out) {
+      toy.pos.y = y + 'px';
+      toy.pos.x = x + 'px';
+    } else {
+      console.log("it's out do something with it");
+    }
   }
 }
