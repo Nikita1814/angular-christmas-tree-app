@@ -7,6 +7,16 @@ export interface Toy {
     color: string
     size: string
     favorite: boolean
+    pos?: {
+      x:string
+      y:string
+    }
+}
+export interface DraggableToy extends Toy{
+pos:{
+  x:string
+  y:string
+}
 }
 
 export interface FilterObjInterface  {
@@ -42,4 +52,8 @@ export interface TreePageSettings  {
   lightsColor: string,
   lightsAnim: string
   lightsOn: boolean,
+}
+export interface posObjInt{
+  x:number
+  y:number
 }

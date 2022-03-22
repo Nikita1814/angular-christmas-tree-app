@@ -1,22 +1,25 @@
 <div class="page tree-page">
-<app-decorations class="tree-left" (animateSnow) = "animateSnow()"></app-decorations>
-  <div class="tree-div" style = "background-image: url(assets/bg/{{toyService.treeSettings.bg}}.jpg);">
+  <app-decorations class="tree-left" (animateSnow)="animateSnow()"></app-decorations>
+  <div class="tree-div" style="background-image: url(assets/bg/{{toyService.treeSettings.bg}}.jpg);">
     <div [hidden]="!toyService.treeSettings.snow" class="snow ">
-      <i *ngFor ="let i of mockArr" class="snowflake"></i>
+      <i *ngFor="let i of mockArr" class="snowflake"></i>
     </div>
     <div [hidden]="!this.toyService.treeSettings.lightsOn" class="lights-container">
-      <div *ngFor=" let rope of decorMockArr; let i = index"  class="lights-rope">
-        <div *ngFor ="let bulb of decorMockArr[i]; let j = index" [hidden]="!this.toyService.treeSettings.lightsOn" [ngStyle]="styleBulb(bulb)"></div>
+      <div *ngFor=" let rope of decorMockArr; let i = index" class="lights-rope">
+        <div *ngFor="let bulb of decorMockArr[i]; let j = index" [hidden]="!this.toyService.treeSettings.lightsOn"
+          [ngStyle]="styleBulb(bulb)"></div>
       </div>
     </div>
-    <img class="tree-image" src="assets/tree/{{toyService.treeSettings.treeImg}}.png" usemap="#tree-map">
-    <map name="tree-map">
-      <area class="drop-area" shape="poly" coords="1,550,102,210,250,1,402,233,499,550,250,699">
-    </map>
+    <div #dropZone id="drop-zone" class="tree-image" cdkDropList (cdkDropListDropped)="treeDrop($event)"
+      [cdkDropListData]="toyService.toysOnTree" cdkDropListSortingDisabled="true"
+      style="background-image: url(assets/tree/{{toyService.treeSettings.treeImg}}.png);">
+      <img src="../../../assets/toys/{{toy.num}}.png" *ngFor="let toy of toyService.toysOnTree" alt="toy-image"
+        class="tree-toy-image" draggable="true" [style.top]="toy.pos.y" [style.left]="toy.pos.x" data-num="toy.num">
+    </div>
   </div>
   <div class="tree-right">
     <h4>Игрушки</h4>
-    <app-toy-box class="toy-select">
+    <app-toy-box id="toy-box" class="toy-select" cdkDropList cdkDropListConnectedTo="drop-zone"
+      [cdkDropListData]="toyService.selectedToys">
     </app-toy-box>
   </div>
-</div>

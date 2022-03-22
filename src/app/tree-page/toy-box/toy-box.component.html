@@ -1,4 +1,4 @@
-<div *ngFor="let toy of selectedToys" class="toy-item"  id="{{toy.num}}">
-  <img src="../../../assets/toys/{{toy.num}}.png" alt="" class="tree-toy-image" draggable="true" data-num="1">
+<div cdkDroplist cdkDropListConnectedTo="drop-zone" *ngFor="let toy of toyService.selectedToys" class="toy-item"   id="{{toy.num}}">
+  <img src="../../../assets/toys/{{toy.num}}.png" alt="toy-image" class="tree-toy-image" draggable="true" data-num="1" cdkDrag ((cdkDragMoved)="moved($event)"  >
   <div class="toy-count"> {{toy.count}} </div>
 </div>

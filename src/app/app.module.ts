@@ -11,7 +11,7 @@ import { ToyGridComponent } from './toys-page/toy-grid/toy-grid.component';
 import { ToyFiltersComponent } from './toys-page/toy-filters/toy-filters.component';
 import { DecorationsComponent } from './tree-page/decorations/decorations.component';
 import { ToyBoxComponent } from './tree-page/toy-box/toy-box.component';
-
+import  {DragDropModule} from '@angular/cdk/drag-drop'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { ToyBoxComponent } from './tree-page/toy-box/toy-box.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

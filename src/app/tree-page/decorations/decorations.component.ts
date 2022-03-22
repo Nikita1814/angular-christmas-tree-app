@@ -20,11 +20,9 @@ export class DecorationsComponent implements OnInit {
     this.toyService.treeSettings.treeImg = tree
   }
   setDecorations(color:string, anim:string){
-    console.log('I was Clicked')
     this.toyService.treeSettings.lightsOn === true && this.toyService.treeSettings.lightsColor === color ? this.toyService.treeSettings.lightsOn = false : this.toyService.treeSettings.lightsOn = true;
     this.toyService.treeSettings.lightsColor = color
     this.toyService.treeSettings.lightsAnim = anim
-    console.log(this.toyService.treeSettings)
   }
   playMusic(){
     this.toyService.treeSettings.music = ! this.toyService.treeSettings.music
@@ -34,7 +32,6 @@ export class DecorationsComponent implements OnInit {
   setSnow(){
     this.toyService.treeSettings.snow = !this.toyService.treeSettings.snow
     if(this.toyService.treeSettings.snow ===true){
-      console.log('i Work')
       this.animateSnow.emit()
     }
   }

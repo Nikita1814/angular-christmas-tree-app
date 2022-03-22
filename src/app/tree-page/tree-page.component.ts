@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { DraggableToy } from '../interfaces';
 import { ToyServiceService } from '../toy-service.service';
 
 @Component({
@@ -7,6 +9,7 @@ import { ToyServiceService } from '../toy-service.service';
   styleUrls: ['./tree-page.component.css'],
 })
 export class TreePageComponent implements OnInit {
+  @ViewChild('dropZone',{read:ElementRef,static:true}) dropZone!:ElementRef
   mockArr: undefined[];
   decorMockArr: (undefined | number)[][];
   constructor(public toyService: ToyServiceService) {
@@ -44,7 +47,6 @@ export class TreePageComponent implements OnInit {
   }
   styleBulb(bulb: number | undefined) { //ropeIdx: number, bulbIdx: number
 
-console.log(bulb)
       return {
         'marginTop.px': `${(bulb as number) * 5 * 0.56
         }`,
@@ -52,5 +54,33 @@ console.log(bulb)
         animation: `3s ease-in-out 0s infinite normal none running ${this.toyService.treeSettings.lightsAnim}`,
       };
 
+  }
+  treeDrop(event: CdkDragDrop<DraggableToy[]>){
+    console.log('i Work')
+   const toy = this.toyService.selectedToys[event.previousIndex]
+   if(Number(toy.count) > 0){
+    console.log(event)
+    const clone = JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]));
+    event.container.data.splice(event.currentIndex, 0, clone);
+     /*copyArrayItem(
+       event.previousContainer.data,
+       event.container.data,
+       event.previousIndex,
+       event.currentIndex
+     )*/
+     toy.count = `${Number(toy.count) - 1}`
+     console.log(this.toyService.toysOnTree);
+   } else if (
+    (Number(toy.count) < 1)){
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      )
+      console.log(this.toyService.toysOnTree)
+    }
+    this.toyService.toysOnTree[event.currentIndex].pos.y =  /*this.dropZone.nativeElement.getBoundingClientRect().top-*/ event.dropPoint.y  + "px"
+    this.toyService.toysOnTree[event.currentIndex].pos.x = /*this.dropZone.nativeElement.getBoundingClientRect().left -*/ event.dropPoint.x   + "px"
   }
 }

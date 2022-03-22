@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import toyData from './data';
-import { Toy, TreePageSettings } from './interfaces';
+import { DraggableToy, posObjInt, Toy, TreePageSettings } from './interfaces';
 import { FilterObjInterface } from './interfaces';
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,22 @@ import { FilterObjInterface } from './interfaces';
 export class ToyServiceService {
   toyData: Toy[]
   favs: Set<Toy>
+  selectedToys : Array<Toy | DraggableToy>
+  toysOnTree:Array<DraggableToy>
   filters: FilterObjInterface
   filtered: Toy[]
   sortfuncs: { [key: string]: (a: Toy, b: Toy) => number }
   treeSettings: TreePageSettings
+  draggedPos: posObjInt
   constructor() {
+    this.draggedPos = {
+      x:0,
+      y:0
+    }
     this.toyData = toyData
     this.favs = new Set()
+    this.selectedToys = Array.from(this.favs)
+    this.toysOnTree = []
     this.filters = {
       shape: new Set(),
       color: new Set(),
