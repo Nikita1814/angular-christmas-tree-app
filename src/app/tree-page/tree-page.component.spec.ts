@@ -8,9 +8,8 @@ describe('TreePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TreePageComponent ]
-    })
-    .compileComponents();
+      declarations: [TreePageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

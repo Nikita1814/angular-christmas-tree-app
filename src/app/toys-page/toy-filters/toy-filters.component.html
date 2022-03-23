@@ -1,60 +1,162 @@
-
-  <div class=" filter appearance-criteria">
-    <h2>Фильтры по значению</h2>
-    <div class="shape">
-      <p>Форма</p>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.shape )" data-criteria="шар" id="ball" class="selectable" [ngClass] ="{'selected': toyService.filters.shape.has('шар')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.shape )"  data-criteria="колокольчик" id="bell" class="selectable"  [ngClass] ="{'selected': toyService.filters.shape.has('колокольчик')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.shape )" data-criteria="шишка" id="cone" class="selectable" [ngClass] ="{'selected': toyService.filters.shape.has('шишка')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.shape )" data-criteria="снежинка" id="snowflake" class="selectable"  [ngClass] ="{'selected': toyService.filters.shape.has('снежинка')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.shape )" data-criteria="фигурка" id="figurine" class="selectable" [ngClass] ="{'selected': toyService.filters.shape.has('фигурка')}"></div>
-    </div>
-    <div class="color">
-      <p>Цвет</p>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.color )"  data-criteria="белый" id="white" class="selectable" [ngClass] ="{'selected': toyService.filters.color.has('белый')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.color )"  data-criteria="желтый" id="yellow" class="selectable" [ngClass] ="{'selected': toyService.filters.color.has('желтый')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.color )"  data-criteria="красный" id="red" class="selectable" [ngClass] ="{'selected': toyService.filters.color.has('красный')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.color )"  data-criteria="синий" id="blue" class="selectable" [ngClass] ="{'selected': toyService.filters.color.has('синий')}"> </div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.color )" data-criteria="зелёный" id="green" class="selectable" [ngClass] ="{'selected': toyService.filters.color.has('зеленый')}"></div>
-    </div>
-    <div class="size">
-      <p>Размер</p>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.size )"  data-criteria="большой" id="big" class="selectable" [ngClass] ="{'selected': toyService.filters.size.has('большой')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.size )"  data-criteria="средний" id="medium" class="selectable" [ngClass] ="{'selected': toyService.filters.size.has('средний')}"></div>
-      <div (click) ="updAppearanceFilter($event, toyService.filters.size )" data-criteria="малый" id="small" class="selectable" [ngClass] ="{'selected': toyService.filters.size.has('малый')}"></div>
-    </div>
-    <div class="favorite">
-      <label>Только любимые:<input type="checkbox" class="fav-check" id="fav" #fav [checked] ="toyService.filters.favorite" (change) ="updFavorite(fav.checked)"></label>
+<div class="filter appearance-criteria">
+  <h2>Фильтры по значению</h2>
+  <div class="shape">
+    <p>Форма</p>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.shape)"
+      data-criteria="шар"
+      id="ball"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.shape.has('шар') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.shape)"
+      data-criteria="колокольчик"
+      id="bell"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.shape.has('колокольчик') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.shape)"
+      data-criteria="шишка"
+      id="cone"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.shape.has('шишка') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.shape)"
+      data-criteria="снежинка"
+      id="snowflake"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.shape.has('снежинка') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.shape)"
+      data-criteria="фигурка"
+      id="figurine"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.shape.has('фигурка') }"
+    ></div>
+  </div>
+  <div class="color">
+    <p>Цвет</p>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.color)"
+      data-criteria="белый"
+      id="white"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.color.has('белый') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.color)"
+      data-criteria="желтый"
+      id="yellow"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.color.has('желтый') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.color)"
+      data-criteria="красный"
+      id="red"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.color.has('красный') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.color)"
+      data-criteria="синий"
+      id="blue"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.color.has('синий') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.color)"
+      data-criteria="зелёный"
+      id="green"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.color.has('зеленый') }"
+    ></div>
+  </div>
+  <div class="size">
+    <p>Размер</p>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.size)"
+      data-criteria="большой"
+      id="big"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.size.has('большой') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.size)"
+      data-criteria="средний"
+      id="medium"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.size.has('средний') }"
+    ></div>
+    <div
+      (click)="updAppearanceFilter($event, toyService.filters.size)"
+      data-criteria="малый"
+      id="small"
+      class="selectable"
+      [ngClass]="{ selected: toyService.filters.size.has('малый') }"
+    ></div>
+  </div>
+  <div class="favorite">
+    <label
+      >Только любимые:<input
+        type="checkbox"
+        class="fav-check"
+        id="fav"
+        #fav
+        [checked]="toyService.filters.favorite"
+        (change)="updFavorite(fav.checked)"
+    /></label>
+  </div>
+</div>
+<div class="filter range-criteria">
+  <div>
+    <h2>Год приобретения</h2>
+    <div id="year-slider"></div>
+    <div class="outputs">
+      <div class="output" id="begin-year">
+        {{ toyService.filters.beginYear }}
+      </div>
+      <div class="output" id="end-year">{{ toyService.filters.endYear }}</div>
     </div>
   </div>
-  <div class="filter range-criteria">
-    <div>
-      <h2>Год приобретения</h2>
-      <div id="year-slider"></div>
-      <div class="outputs">
-        <div class="output" id="begin-year">{{toyService.filters.beginYear}}</div>
-        <div class="output" id="end-year">{{toyService.filters.endYear}}</div>
+  <div>
+    <h2>Количество экземпляров</h2>
+    <div id="amount-slider"></div>
+    <div class="outputs">
+      <div class="output" id="begin-amount">
+        {{ toyService.filters.beginAmount }}
+      </div>
+      <div class="output" id="end-amount">
+        {{ toyService.filters.endAmount }}
       </div>
     </div>
-    <div>
-      <h2>Количество экземпляров</h2>
-      <div id="amount-slider"></div>
-      <div class="outputs">
-        <div class="output" id="begin-amount">{{toyService.filters.beginAmount}}</div>
-        <div class="output" id="end-amount">{{toyService.filters.endAmount}}</div>
-      </div>
-    </div>
   </div>
-  <div class="filter sorting-criteria">
-    <h2>Сортировка</h2>
-    <select (change)="updSortFunc($event)" [value] ="this.toyService.filters.sort "name="sorts" class="sorts">
-      <option value="AZ"> По названию от А до Я</option>
-      <option value="ZA"> По названию от Я до А</option>
-      <option value="decrease"> По количеству по убыванию</option>
-      <option value="increase"> По количеству по возрастанию</option>
-    </select>
-    <input (input)="updSearch($event)" type="search" class="search" autocomplete="off" placeholder="По имени" [value] ="toyService.filters.search">
-    <button class="reset" (click) = "toyService.resetFilters()">Сброс</button>
-    <button class="reset-all"> Сбросить Хранилище</button>
-  </div>
-
+</div>
+<div class="filter sorting-criteria">
+  <h2>Сортировка</h2>
+  <select
+    (change)="updSortFunc($event)"
+    [value]="this.toyService.filters.sort"
+    name="sorts"
+    class="sorts"
+  >
+    <option value="AZ">По названию от А до Я</option>
+    <option value="ZA">По названию от Я до А</option>
+    <option value="decrease">По количеству по убыванию</option>
+    <option value="increase">По количеству по возрастанию</option>
+  </select>
+  <input
+    (input)="updSearch($event)"
+    type="search"
+    class="search"
+    autocomplete="off"
+    placeholder="По имени"
+    [value]="toyService.filters.search"
+  />
+  <button class="reset" (click)="toyService.resetFilters()">Сброс</button>
+  <button class="reset-all">Сбросить Хранилище</button>
+</div>

@@ -1,6 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-@import 'nouislider/dist/nouislider.css';
+@import "nouislider/dist/nouislider.css";
 * {
   box-sizing: border-box;
   /*transition: all 1s ease-in-out;*/
@@ -10,7 +10,7 @@
 
 body {
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: white;
   font-size: 16px;
   padding: 0;
@@ -326,7 +326,7 @@ width: 89px;*/
   height: 43px;
   cursor: pointer;
 }
-input[type='range'] {
+input[type="range"] {
   width: 90%;
 }
 .output {
@@ -686,69 +686,64 @@ input[type='range'] {
   cursor: all-scroll;
 }
 
-
-
-
-
-
 @keyframes blink {
   0%,
   100% {
-      opacity: 1;
+    opacity: 1;
   }
   50% {
-      opacity: 0.5;
+    opacity: 0.5;
   }
 }
 @keyframes mix {
   0%,
   100% {
-      background-color: palevioletred;
-      opacity: 1;
+    background-color: palevioletred;
+    opacity: 1;
   }
   20% {
-      background-color: lime;
+    background-color: lime;
   }
   40% {
-      background-color: cyan;
+    background-color: cyan;
   }
   80% {
-      background-color: yellow;
+    background-color: yellow;
   }
   50% {
-      opacity: 0.5;
+    opacity: 0.5;
   }
 }
 
 @media (max-width: 1441px) {
   .tree-select-type {
-      width: 90px;
-      height: 90px;
+    width: 90px;
+    height: 90px;
   }
   .tree-select-bg {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
   .toy-item {
-      width: 70px;
-      height: 70px;
+    width: 70px;
+    height: 70px;
   }
 }
 
 @media (max-width: 1024px) {
   .criteria {
-      width: 30%;
+    width: 30%;
   }
   .tree-select-type {
-      width: 70px;
-      height: 70px;
+    width: 70px;
+    height: 70px;
   }
   .tree-select-bg {
-      width: 70px;
-      height: 70px;
+    width: 70px;
+    height: 70px;
   }
   .toy-item {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
 }

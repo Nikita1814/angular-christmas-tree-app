@@ -4,13 +4,10 @@ import { ToyServiceService } from 'src/app/toy-service.service';
 @Component({
   selector: 'app-toy-grid',
   templateUrl: './toy-grid.component.html',
-  styleUrls: ['./toy-grid.component.css']
+  styleUrls: ['./toy-grid.component.css'],
 })
 export class ToyGridComponent implements OnInit {
-  constructor( public toyService: ToyServiceService) {
-   }
+  constructor(public toyService: ToyServiceService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

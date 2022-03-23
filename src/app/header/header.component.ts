@@ -3,13 +3,10 @@ import { ToyServiceService } from '../toy-service.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public toyService:ToyServiceService) {
-   }
+  constructor(public toyService: ToyServiceService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -8,9 +8,8 @@ describe('ToyGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToyGridComponent ]
-    })
-    .compileComponents();
+      declarations: [ToyGridComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
