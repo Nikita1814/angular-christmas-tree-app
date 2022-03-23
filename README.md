@@ -1,27 +1,7 @@
 # AngularChristmasTask
+angular version of the vanilla js app that you may view here (https://github.com/Nikita1814/rs-stuff)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+Deploy(https://christmass-app-nikita1814.netlify.app/)
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The objective was to create a mini-game app imitating the process of decorating a fir tree
+Notable features: a) Users have the ability to select decorations from a collection b) said collection can be filtered by name, size, color, shape, year of acquisition and amount c) having selected several toys the users are given the opportunity to place them on a fir tree (through the use of drag-and-drop) d) the users are also given an opportunity to select a fir-tree, a background and a color of CSS generated Christmas lights from several provided options e) it is a SPA c) My first attempt at using webpack and Typescript
